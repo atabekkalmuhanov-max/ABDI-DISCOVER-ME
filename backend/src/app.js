@@ -8,6 +8,9 @@ const { errorHandler, notFound } = require('./middleware/errorHandler')
 
 const app = express()
 
+// Required for Render (and any reverse proxy): fixes ERR_ERL_UNEXPECTED_X_FORWARDED_FOR
+app.set('trust proxy', 1)
+
 app.use(helmet())
 
 const defaultOrigins = [
@@ -58,6 +61,7 @@ app.use('/api/routes', require('./routes/routePlanner'))
 app.use('/api/favorites', require('./routes/favorites'))
 app.use('/api/admin', require('./routes/admin'))
 
+app.get('/', (_, res) => res.json({ status: 'ok', message: 'Backend running' }))
 app.get('/api/health', (_, res) => res.json({ status: 'ok', timestamp: new Date().toISOString() }))
 
 app.use(notFound)

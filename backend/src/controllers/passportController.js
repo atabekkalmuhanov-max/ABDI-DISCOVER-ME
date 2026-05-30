@@ -66,7 +66,7 @@ const getPassport = async (req, res, next) => {
       db.query(`SELECT COUNT(*) FROM reviews WHERE user_id = $1`, [userId]),
       db.query(`SELECT COUNT(*) FROM hidden_places_discoveries WHERE user_id = $1`, [userId]),
       db.query(`SELECT COUNT(*) FROM quiz_results WHERE user_id = $1`, [userId]),
-      db.query(`SELECT COUNT(*) FROM ai_stories WHERE user_id = $1`, [userId]),
+      db.query(`SELECT COUNT(*) FROM ai_story_history WHERE user_id = $1`, [userId]),
       db.query(
         `SELECT region, COUNT(*) AS total
          FROM destinations

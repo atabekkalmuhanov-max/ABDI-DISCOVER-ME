@@ -253,8 +253,7 @@ const getReviews = async (req, res, next) => {
     const offset = (pageNum - 1) * limitNum
 
     const { rows } = await db.query(
-      `SELECT r.id, r.entity_type, r.entity_id, r.rating, r.title, r.comment,
-              r.helpful_count, r.created_at,
+      `SELECT r.id, r.destination_id, r.rating, r.comment, r.created_at,
               u.id as user_id, u.name as user_name, u.email as user_email
        FROM reviews r
        JOIN users u ON u.id = r.user_id
