@@ -31,7 +31,7 @@ const setRefreshCookie = (res, rawToken, rememberMe) => {
   res.cookie('refreshToken', rawToken, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
     maxAge: days * 24 * 60 * 60 * 1000,
     path: '/api/auth',
   })
