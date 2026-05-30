@@ -9,8 +9,15 @@ const { errorHandler, notFound } = require('./middleware/errorHandler')
 const app = express()
 
 app.use(helmet())
+const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
+  .split(',')
+  .map(o => o.trim())
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) callback(null, true)
+    else callback(new Error('CORS: origin not allowed'))
+  },
   credentials: true,
 }))
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'))
