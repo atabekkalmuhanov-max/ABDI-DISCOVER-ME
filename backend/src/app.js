@@ -9,17 +9,29 @@ const { errorHandler, notFound } = require('./middleware/errorHandler')
 const app = express()
 
 app.use(helmet())
-const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
-  .split(',')
-  .map(o => o.trim())
 
-app.use(cors({
+const defaultOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'https://abdi-discover-me-3qgf.vercel.app',
+]
+const envOrigins = process.env.CLIENT_URL
+  ? process.env.CLIENT_URL.split(',').map(o => o.trim())
+  : []
+const allowedOrigins = [...new Set([...defaultOrigins, ...envOrigins])]
+
+const corsOptions = {
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) callback(null, true)
     else callback(new Error('CORS: origin not allowed'))
   },
   credentials: true,
-}))
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}
+
+app.use(cors(corsOptions))
+app.options('*', cors(corsOptions))
 app.use(morgan(process.env.NODE_ENV === 'production' ? 'combined' : 'dev'))
 app.use(express.json({ limit: '10kb' }))
 app.use(express.urlencoded({ extended: true }))
