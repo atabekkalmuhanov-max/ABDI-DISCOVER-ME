@@ -18,17 +18,20 @@ const start = async () => {
     process.exit(1)
   }
 
+  // Bind the port first so Render's health checker detects it immediately.
+  // DB connect and migrations happen after — API calls will fail until ready,
+  // but the process stays alive and the port is open.
+  app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on port ${PORT}`)
+  })
+
   try {
     await pool.query('SELECT 1')
     console.log('Database connected')
-
     await runMigrations()
-
-    app.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`)
-    })
+    console.log('Migrations complete — server ready')
   } catch (err) {
-    console.error("Failed to start server:", err);
+    console.error('Failed to connect to database or run migrations:', err)
     process.exit(1)
   }
 }
