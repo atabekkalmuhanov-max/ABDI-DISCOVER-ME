@@ -127,4 +127,51 @@ export const timeTravelService = {
   getHistory: () => api.get('/time-travel/history'),
 }
 
+export const hiddenPlacesService = {
+  discover: (data) => api.post('/hidden-places/discover', data),
+  getHistory: () => api.get('/hidden-places/history'),
+}
+
+export const passportService = {
+  getPassport:    ()           => api.get('/passport'),
+  getVisitedIds:  ()           => api.get('/passport/visited-ids'),
+  markVisited:    (destinationId, notes) => api.post('/passport/visit', { destinationId, notes }),
+  unmarkVisited:  (destinationId)        => api.delete(`/passport/visit/${destinationId}`),
+}
+
+export const chatService = {
+  getSessions: () => api.get('/chat/sessions'),
+  getMessages: (sessionId) => api.get(`/chat/sessions/${sessionId}/messages`),
+  sendMessage: (data) => api.post('/chat/send', data),
+  deleteSession: (sessionId) => api.delete(`/chat/sessions/${sessionId}`),
+}
+
+export const routeService = {
+  getAll: (params) => api.get('/routes', { params }),
+  getById: (id) => api.get(`/routes/${id}`),
+  create: (data) => api.post('/routes', data),
+  update: (id, data) => api.put(`/routes/${id}`, data),
+  delete: (id) => api.delete(`/routes/${id}`),
+}
+
+export const favoritesService = {
+  getAll: (params) => api.get('/favorites', { params }),
+  getIds: (entity_type) => api.get('/favorites/ids', { params: { entity_type } }),
+  add: (entity_type, entity_id) => api.post('/favorites', { entity_type, entity_id }),
+  remove: (entity_type, entity_id) => api.delete(`/favorites/${entity_type}/${entity_id}`),
+}
+
+export const adminService = {
+  getStats: () => api.get('/admin/stats'),
+  getUsers: (params) => api.get('/admin/users', { params }),
+  updateUser: (id, data) => api.put(`/admin/users/${id}`, data),
+  deleteUser: (id) => api.delete(`/admin/users/${id}`),
+  getDestinations: (params) => api.get('/admin/destinations', { params }),
+  createDestination: (data) => api.post('/admin/destinations', data),
+  updateDestination: (id, data) => api.put(`/admin/destinations/${id}`, data),
+  deleteDestination: (id) => api.delete(`/admin/destinations/${id}`),
+  getReviews: (params) => api.get('/admin/reviews', { params }),
+  deleteReview: (id) => api.delete(`/admin/reviews/${id}`),
+}
+
 export default api

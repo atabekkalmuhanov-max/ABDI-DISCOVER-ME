@@ -32,6 +32,12 @@ app.use('/api/guide', aiLimiter, require('./routes/guide'))
 app.use('/api/quiz',  aiLimiter, require('./routes/quiz'))
 app.use('/api/story', aiLimiter, require('./routes/story'))
 app.use('/api/time-travel', aiLimiter, require('./routes/timeTravel'))
+app.use('/api/chat', aiLimiter, require('./routes/chat'))
+app.use('/api/hidden-places', aiLimiter, require('./routes/hiddenPlaces'))
+app.use('/api/passport', require('./routes/passport'))
+app.use('/api/routes', require('./routes/routePlanner'))
+app.use('/api/favorites', require('./routes/favorites'))
+app.use('/api/admin', require('./routes/admin'))
 
 app.get('/api/health', (_, res) => res.json({ status: 'ok', timestamp: new Date().toISOString() }))
 
