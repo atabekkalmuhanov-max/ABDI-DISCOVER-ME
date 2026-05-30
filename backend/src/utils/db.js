@@ -1,15 +1,15 @@
 const { Pool } = require('pg')
 
-const isProduction = process.env.NODE_ENV === 'production'
+const useConnectionString = Boolean(process.env.DATABASE_URL)
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || undefined,
-  host: process.env.DATABASE_URL ? undefined : process.env.DB_HOST,
-  port: process.env.DATABASE_URL ? undefined : parseInt(process.env.DB_PORT, 10),
-  database: process.env.DATABASE_URL ? undefined : process.env.DB_NAME,
-  user: process.env.DATABASE_URL ? undefined : process.env.DB_USER,
-  password: process.env.DATABASE_URL ? undefined : process.env.DB_PASSWORD,
-  ssl: isProduction ? { rejectUnauthorized: false } : false,
+  connectionString: useConnectionString ? process.env.DATABASE_URL : undefined,
+  host: useConnectionString ? undefined : process.env.DB_HOST,
+  port: useConnectionString ? undefined : parseInt(process.env.DB_PORT, 10),
+  database: useConnectionString ? undefined : process.env.DB_NAME,
+  user: useConnectionString ? undefined : process.env.DB_USER,
+  password: useConnectionString ? undefined : process.env.DB_PASSWORD,
+  ssl: useConnectionString ? { rejectUnauthorized: false } : false,
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 5000,
