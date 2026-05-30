@@ -5,10 +5,13 @@ const { runMigrations } = require('../scripts/migrate')
 
 const PORT = process.env.PORT || 5000
 
-const REQUIRED_ENV = ['JWT_SECRET', 'DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASSWORD']
-
 const start = async () => {
-  const missing = REQUIRED_ENV.filter(k => !process.env[k] && !process.env.DATABASE_URL)
+  const missing = [
+    ...(!process.env.JWT_SECRET ? ['JWT_SECRET'] : []),
+    ...(!process.env.DATABASE_URL
+      ? ['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASSWORD'].filter(k => !process.env[k])
+      : []),
+  ]
   if (missing.length) {
     console.error('Missing required env vars:', missing.join(', '))
     console.error('Copy backend/.env.example to backend/.env and fill in values.')
