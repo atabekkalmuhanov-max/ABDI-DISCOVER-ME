@@ -26,7 +26,7 @@ const allowedOrigins = [...new Set([...defaultOrigins, ...envOrigins])]
 const corsOptions = {
   origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) callback(null, true)
-    else callback(new Error('CORS: origin not allowed'))
+    else callback(null, false)
   },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
