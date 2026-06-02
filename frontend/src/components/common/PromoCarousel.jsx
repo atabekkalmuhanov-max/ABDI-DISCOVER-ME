@@ -49,7 +49,7 @@ export default function PromoCarousel({ items }) {
         {items.map((item) => (
           <Link
             key={item.id}
-            to={`/destinations?search=${encodeURIComponent(item.title)}`}
+            to={`/themes/${item.slug || encodeURIComponent(item.title)}`}
             className="flex-shrink-0 w-[216px] h-64 relative rounded-2xl overflow-hidden cursor-pointer group"
           >
             <img

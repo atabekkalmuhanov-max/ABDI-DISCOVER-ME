@@ -26,30 +26,35 @@ const CATEGORIES = [
 const PROMO_ITEMS = [
   {
     id: 1,
+    slug: 'timurid',
     title: 'Архитектура Тимуридов',
     image: 'https://upload.wikimedia.org/wikipedia/commons/4/46/Registan_01.jpg',
     count: 24,
   },
   {
     id: 2,
+    slug: 'silk-road',
     title: 'Великий Шёлковый путь',
     image: 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Bukhara_Caravansaray.jpg',
     count: 18,
   },
   {
     id: 3,
+    slug: 'mosques',
     title: 'Мечети и медресе',
     image: 'https://upload.wikimedia.org/wikipedia/commons/9/98/Itchan_Kala_minaret.jpg',
     count: 36,
   },
   {
     id: 4,
+    slug: 'shah-i-zinda',
     title: 'Мавзолеи Шах-и-Зинда',
     image: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/Shahi-Zinda_271.jpg',
     count: 15,
   },
   {
     id: 5,
+    slug: 'mountains',
     title: 'Горные маршруты',
     image: 'https://upload.wikimedia.org/wikipedia/commons/0/07/Tian_Shan_Panorama.jpg',
     count: 12,

@@ -21,6 +21,7 @@ import TravelPassport from '@/pages/TravelPassport'
 import RoutePlanner from '@/pages/RoutePlanner'
 import Favorites from '@/pages/Favorites'
 import AdminPanel from '@/pages/AdminPanel'
+import ThemePage from '@/pages/ThemePage'
 import NotFound from '@/pages/NotFound'
 import PrivateRoute from '@/components/common/PrivateRoute'
 import AdminRoute from '@/components/common/AdminRoute'
@@ -57,6 +58,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/destinations" element={<Destinations />} />
           <Route path="/destinations/:id" element={<DestinationDetail />} />
+          <Route path="/themes/:slug" element={<ThemePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/map" element={<MapPage />} />
