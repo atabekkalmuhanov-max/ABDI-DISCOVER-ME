@@ -27,31 +27,31 @@ const PROMO_ITEMS = [
   {
     id: 1,
     title: 'Архитектура Тимуридов',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Registan_Samarkand.jpg/800px-Registan_Samarkand.jpg',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/4/46/Registan_01.jpg',
     count: 24,
   },
   {
     id: 2,
     title: 'Великий Шёлковый путь',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Bukhara-Citadel_ARK.jpg/800px-Bukhara-Citadel_ARK.jpg',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/c/c7/Bukhara_Caravansaray.jpg',
     count: 18,
   },
   {
     id: 3,
     title: 'Мечети и медресе',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Khiva_viewed_from_Islam_Khodja_minaret.jpg/800px-Khiva_viewed_from_Islam_Khodja_minaret.jpg',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/9/98/Itchan_Kala_minaret.jpg',
     count: 36,
   },
   {
     id: 4,
     title: 'Мавзолеи Шах-и-Зинда',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Samarkand_Shah-i-Zinda.jpg/800px-Samarkand_Shah-i-Zinda.jpg',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/8/8d/Shahi-Zinda_271.jpg',
     count: 15,
   },
   {
     id: 5,
     title: 'Горные маршруты',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Tashkent_TV_Tower.JPG/800px-Tashkent_TV_Tower.JPG',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/0/07/Tian_Shan_Panorama.jpg',
     count: 12,
   },
 ]

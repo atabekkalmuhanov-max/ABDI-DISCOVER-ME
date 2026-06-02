@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom'
 import {
-  Search, Menu, X, LogOut, ChevronDown, Globe, Sun, Moon,
+  Search, Menu, X, LogOut, ChevronDown, Sun, Moon,
   Wand2, LayoutDashboard, BookOpen, Route, Heart, Shield,
   Sparkles, Camera, Brain, Scroll, Zap, Compass, MessageSquare,
   Map,
@@ -84,9 +84,21 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 shrink-0">
-            <div className="w-8 h-8 rounded-xl bg-primary-500 flex items-center justify-center shadow-sm">
-              <Globe className="w-4 h-4 text-white" />
-            </div>
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" className="drop-shadow-sm shrink-0">
+              <defs>
+                <linearGradient id="dm-logo" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#1DB8A8" />
+                  <stop offset="1" stopColor="#0d7a70" />
+                </linearGradient>
+              </defs>
+              <rect width="36" height="36" rx="10" fill="url(#dm-logo)" />
+              <circle cx="18" cy="18" r="11" stroke="white" strokeWidth="1.5" strokeOpacity="0.8" fill="none" />
+              <path d="M7 18 Q18 13.5 29 18" stroke="white" strokeWidth="1" strokeOpacity="0.6" fill="none" />
+              <path d="M7 18 Q18 22.5 29 18" stroke="white" strokeWidth="1" strokeOpacity="0.6" fill="none" />
+              <ellipse cx="18" cy="18" rx="5.5" ry="11" stroke="white" strokeWidth="1" strokeOpacity="0.6" fill="none" />
+              <circle cx="18" cy="15.5" r="3.2" fill="white" />
+              <path d="M15 17.5 L18 23 L21 17.5 Z" fill="white" />
+            </svg>
             <span className="font-bold text-lg tracking-tight hidden sm:block">
               <span className="text-primary-500">DISCOVER</span>
               <span className="text-gray-900">-ME</span>
